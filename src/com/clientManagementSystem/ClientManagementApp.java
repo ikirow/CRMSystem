@@ -2,8 +2,8 @@ package com.clientManagementSystem;
 
 import com.clientMaagementSystem.fileHandling.CSVReader;
 import com.clientMaagementSystem.fileHandling.CSVWriter;
+import com.services.ClientsService;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,8 +15,8 @@ public class ClientManagementApp {
         CSVReader fileReader = new CSVReader();
         CSVWriter fileWriter = new CSVWriter();
         List<Client> clients = new ArrayList<>();
-        Service service = new Service(fileReader, fileWriter, clients);
-        Manager manager = new Manager(service);
+        ClientsService clientsService = new ClientsService(fileReader, fileWriter, clients);
+        Manager manager = new Manager(clientsService);
         System.out.println("Welcome to the Client Management System");
         displayOptions();
 
@@ -29,7 +29,7 @@ public class ClientManagementApp {
                 manager.performAction(command);
             }
             // Add Client
-            // 1, Oceanic Enterprises, Finance, Sarah Smith, 500000.00
+            // 5, Oceanic Enterprises, Finance, Sarah Smith, 500000.00
             // Update Client
             // 1, Oceanic Enterprises, Tech, Sarah Smith, 750000.00
             // View Clients
@@ -47,8 +47,8 @@ public class ClientManagementApp {
         System.out.println("View Clients");
         System.out.println("Search by Industry");
         System.out.println("Search by ID");
-        System.out.println("Search by Client");
+        System.out.println("Remove Client");
         System.out.println("Search by Name");
-        System.out.println("Save & Exit");
+        System.out.println("Save and Exit");
     }
 }
