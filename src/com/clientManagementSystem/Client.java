@@ -3,14 +3,14 @@ package com.clientManagementSystem;
 import java.io.Serializable;
 
 public class Client implements Serializable {
-    private int ID = 1;
+    private int id = 1;
     private String name;
     private String industry;
     private String contactPerson;
     private double revenue;
 
-    public Client(int ID, String name, String industry, String contactPerson, double revenue) {
-        this.ID = ID;
+    public Client(int id, String name, String industry, String contactPerson, double revenue) {
+        this.id = id;
         this.name = name;
         this.industry = industry;
         this.contactPerson = contactPerson;
@@ -23,15 +23,15 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return ID + ',' + name + ',' + industry + ',' + contactPerson + ',' + revenue;
+        return id + ", " + name + ", " + industry + ", " + contactPerson + ", " + revenue;
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getName() {

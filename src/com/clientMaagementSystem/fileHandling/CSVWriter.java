@@ -1,5 +1,6 @@
 package com.clientMaagementSystem.fileHandling;
 
+import com.clientManagementSystem.Client;
 import interfaces.Writer;
 
 import java.io.FileWriter;
@@ -10,10 +11,10 @@ import java.util.List;
 
 public class CSVWriter implements Writer {
     @Override
-    public void write(List<Serializable> items, String path) {
+    public void write(List<Serializable> clients, String path) {
         try (   FileWriter writer = new FileWriter(path)) {
-            for (Serializable item: items){
-                writer.write(item.toString() + '\n');
+            for (Serializable client: clients){
+                writer.write(client.toString() + '\n');
             }
         } catch (IOException e) {
             e.printStackTrace();
