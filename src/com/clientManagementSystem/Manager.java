@@ -1,6 +1,9 @@
 package com.clientManagementSystem;
 
+import java.util.Scanner;
+
 public class Manager {
+    Scanner scanner = new Scanner(System.in);
     private final Service service;
 
     public Manager(Service clientService) {
@@ -8,28 +11,37 @@ public class Manager {
     }
 
     public void performAction(String command) {
-        // Based on the command, delegate to the appropriate method in ClientService
         if (command.startsWith("Add Client")) {
-            // Parse the command and extract client details
-            Client client = parseClientDetails(command);
+            System.out.println("To add client please provide client info in the following format [id], [name], [industry], [contact person], [revenue]");
+            String newClient = scanner.nextLine();
+            Client client = parseClientDetails(newClient);
             service.addClient(client);
         } else if (command.startsWith("Update Client")) {
-            // Similar logic for other commands
+            System.out.println("Enter client ID to update: ");
+            int clientId = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Enter updated client details (Name, Industry, ContactPerson, Revenue): ");
+            String updatedDetails = scanner.nextLine();
+
+            Client updatedClient = parseClientDetails(updatedDetails);
+
+            service.updateClient(clientId, updatedClient);
         } else if (command.startsWith("Save & Exit")) {
-            // Similar logic for other commands
+
             service.saveData();
         }
-        // Other conditionals for different commands
+
     }
 
     private Client parseClientDetails(String command) {
         String[] parts = command.split(", ");
-        //We start from 1 since 0 is the command
-        int id = Integer.parseInt(parts[1]);
-        String name = parts[2];
-        String industry = parts[3];
-        String contactPerson = parts[4];
-        double revenue = Double.parseDouble(parts[5]);
+
+        int id = Integer.parseInt(parts[0]);
+        String name = parts[1];
+        String industry = parts[2];
+        String contactPerson = parts[3];
+        double revenue = Double.parseDouble(parts[4]);
 
         return new Client(id, name, industry, contactPerson, revenue);
     }

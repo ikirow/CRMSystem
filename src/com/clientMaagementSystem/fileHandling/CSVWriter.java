@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CSVWriter implements Writer {
     @Override
-    public void write(List<Serializable> clients, String path) {
+    public void write(List<Client> clients, String path) {
         try (   FileWriter writer = new FileWriter(path)) {
             for (Serializable client: clients){
                 writer.write(client.toString() + '\n');

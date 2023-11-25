@@ -14,7 +14,7 @@ public class ClientManagementApp {
         // Implement file operations for XML/SQLite
         CSVReader fileReader = new CSVReader();
         CSVWriter fileWriter = new CSVWriter();
-        List<Serializable> clients = new ArrayList<>();
+        List<Client> clients = new ArrayList<>();
         Service service = new Service(fileReader, fileWriter, clients);
         Manager manager = new Manager(service);
         System.out.println("Welcome to the Client Management System");
